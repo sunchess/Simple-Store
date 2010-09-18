@@ -2,6 +2,9 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+config/*.yml
 
 #rubymine
 .idea
+#run server
+run.sh

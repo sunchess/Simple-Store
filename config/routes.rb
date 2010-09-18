@@ -1,5 +1,6 @@
 SimpleStore::Application.routes.draw do
-  # The priority is based upon order of creation:
+
+  #The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -48,11 +49,30 @@ SimpleStore::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+   root :to => "products#index"
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  namespace :admin do
+    resources :groups do
+       resources :products
+    end
+  end
+
+  resources :user_sessions, :only=>[:new, :create, :destroy]
+  resources :users, :only=>[:new, :create, :edit, :update]
+
+
+  match '/login' => 'user_sessions#new', :as => 'login'
+  match '/logout' => 'user_sessions#destroy', :as => 'logout'
+
+  match '/register' => 'users#new', :as => 'register'
+
+
+
+  resources :products
 end

@@ -5,10 +5,12 @@ gem 'rails', '3.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'mysql2'
 gem 'right-rails'
 gem "cancan"
-gem "authlogic"
+#gem "authlogic"
+gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
+gem "will_paginate", "~> 3.0.pre2"
 
 
 
@@ -19,6 +21,7 @@ group :test do
   gem 'rspec-expectations', RSPEC_VERSION, :require => 'rspec/expectations'
   gem 'rspec-mocks', RSPEC_VERSION, :require => 'rspec/mocks'
   gem 'rspec-rails', RSPEC_VERSION
+  gem "autotest"
   # Cucumber
   gem 'capybara'
   gem 'database_cleaner'
@@ -27,7 +30,8 @@ group :test do
   gem 'spork' unless RUBY_PLATFORM =~ /mswin|mingw/
   gem 'launchy'
   gem 'gherkin'
-  gem 'webrat'
+  gem 'factory_girl_rails'
+  #gem 'webrat' #It still not works with Rails 3.
 end
 
 # Use unicorn as the web server
@@ -48,6 +52,5 @@ end
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+
+

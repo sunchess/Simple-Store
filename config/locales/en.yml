@@ -2,4 +2,41 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  submit: "Submit"
+  back: "Back"
+  created: "Successfully create."
+  updated: "Successfully update."
+  edit: "Edit"
+  destroy: "Destroy"
+  destroyed: "Successfully destroy."
+  session:
+    logged_in: "Successfully logged in."
+    logged_out: "Successfully logged out."
+    logout: "Logout"
+    login: "Login"
+    remember_me: "Remember me"
+  user:
+    edit: "Edit Profile"
+    new: "Register"
+    flashes:
+       have_account: "You have account!"
+       register_done: "Registration successful."
+       mast_logged_out: "You must be logged out to access this page"
+       mast_logged in: "You must be logged in to access this page"
+       mast_have_admin: "You mast registration of admin user"
+    titles:
+      new: "New user"
+  group:
+    flashes:
+      created: "Successfully create."
+  #active record section
+  activerecord:
+    attributes:
+      user:
+        email: "Email" #Exeple for not en locale
+        password: "Password"
+      group:
+        name: "Name"
+
+ 
+
