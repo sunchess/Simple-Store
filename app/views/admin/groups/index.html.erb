@@ -1,0 +1,57 @@
+ <%= content_for :content do %>
+ <% if @groups.any?-%>
+   
+       <table width="90%" cellspacing="1" cellpadding="3" >
+         <tbody id="groups">
+          <th><%= t("activerecord.attributes.group.name") %></th>
+          <% @groups.each do |group| -%>
+            <tr class="<%= cycle("even", "odd") %>">
+              <td width="65%">
+                <%= group.name %>(<%= group.products_counter %>)
+              </td>
+              <td align="center">
+                <%= link_to_if can?(:edit, Group),  t("edit"), edit_admin_group_path(group.id)%>  
+                <%= link_to_if can?(:destroy, Group), t("destroy"), admin_group_path(group.id), :method => :delete, :confirm => t("sure")%> 
+                <%= link_to_if can?(:create, Group), t("group.new_sub"),  new_admin_group_path(:parent_id=>group.id) %>
+                </td>
+            </tr>
+              <% if group.children.any? -%>
+                <% @children = group.children -%>
+                <tr>
+                  <td colspan="2">
+                    <%#= render :partial=>"children", :locals=>{:children=>@children} %>
+                  </td>
+                </tr>      
+              <% end -%>
+          <% end %>
+         </tbody>
+        </table>
+        <script type="text/javascript">
+            function updateOrder()
+            {
+                var options = {
+                                method : 'post',
+                                parameters : Sortable.serialize('movies_list')
+                              };
+ 
+                new Ajax.Request('processor.php', options);
+            }
+            Sortable.create("groups", { tag:"tr", ghosting:true, onUpdate:updateOrder })
+        </script>
+
+
+      <% else %>
+        <%= t("no_records") %>
+      <% end %>
+  <% end -%>  
+  
+  <%= content_for :navigation do %>   
+      <div class="navigation">
+        <% if can?(:create, Group) %>
+          <div><%= link_to t("group.new"), new_admin_group_path%></div>
+          <div><%= link_to t("change_order"), "#" %></div>
+        <% end %>
+        </div>
+   <% end -%>
+   
+<%= render(:layout => 'layouts/admin/content_table' ) {}%>

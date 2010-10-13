@@ -58,7 +58,8 @@ SimpleStore::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   namespace :admin do
-    resources :groups do
+    resources :groups, :except=>[:show] do
+       post :sort, :on=> :collection
        resources :products
     end
   end

@@ -1,5 +1,7 @@
 <div id="user_nav">
   <% if current_user %>
+    <%= render :partial => "layouts/admin_section" %>
+    <%= t("user.hello") %>, <%= current_user.email %>
     <%= link_to t('user.edit'), edit_user_path(:current) %> |
     <%= link_to t('session.logout'), logout_path %>
   <% else %>

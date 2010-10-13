@@ -6,12 +6,13 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'right-rails'
+#gem 'right-rails'
 gem "cancan"
 #gem "authlogic"
 gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3' 
 gem "will_paginate", "~> 3.0.pre2"
-
+gem "acts_as_list"
+gem "acts_as_tree"
 
 
 group :test do

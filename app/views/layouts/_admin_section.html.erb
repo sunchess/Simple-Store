@@ -1,0 +1,6 @@
+<%# admin_section do -%>
+<% if not current_user.role?(:user) %>
+  Manage area: 
+  <%= link_to( t('group.name'), admin_groups_path  )%> 
+  |
+<% end %>

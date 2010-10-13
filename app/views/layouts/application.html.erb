@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SimpleStore</title>
+  <title> SimpleStore <%= ("[" << draw_title << "]") if view_title? %></title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :all, :cache => true %>
+  <%= javascript_include_tag :defaults, :cache => true %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-<%= render :partial => "layouts/users_login_register" %>
-<%= flashes %>
-<%= yield %>
-
+<div id="body">
+    <div id="logo">Simple Store</div>
+    <%= render :partial => "layouts/users_login_register" %>
+        <div id="content">
+            <%= flashes %>
+            <%= render :partial => 'layouts/title' %>
+            <%= yield %>
+        </div>
+    </div>
 </body>
 </html>

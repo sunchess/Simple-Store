@@ -1,0 +1,15 @@
+<h1><%= t('session.login') %></h1>
+
+<%= form_for @user_session, :url => user_sessions_path do |f| %>
+  <%= f.error_messages %>
+  <%= f.label t('activerecord.attributes.user.email') %><br />
+  <%= f.text_field :email %><br />
+  <br />
+  <%= f.label t('activerecord.attributes.user.password') %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <%= f.check_box :remember_me %><%= f.label t('session.remember_me') %><br />
+  <br />
+  <%= f.submit t('submit') %>
+<% end %>
+

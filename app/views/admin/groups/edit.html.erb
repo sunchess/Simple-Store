@@ -1,0 +1,9 @@
+<%= content_for :content do %>
+  <%= render "form" %>
+<% end -%>
+
+<%= content_for :navigation do %>
+  <%= link_to t("back"), admin_groups_path %>
+ <% end -%>
+ 
+ <%= render(:layout => 'layouts/admin/content_table' ) {}%>

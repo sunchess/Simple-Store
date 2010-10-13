@@ -1,0 +1,20 @@
+        <table width="100%" cellspacing="1" cellpadding="3">
+          <% children.each do |group| -%>
+            <tr class="<%= cycle("even", "odd") %>">
+              <td width="65%"><%= group.name %>(<%= group.products_counter %>)</td>
+              <td align="center">
+                <%= link_to_if can?(:edit, Group),  t("edit"), edit_admin_group_path(group.id)%>  
+                <%= link_to_if can?(:destroy, Group), t("destroy"), admin_group_path(group.id), :method => :delete, :confirm => t("sure")%> 
+                <%= link_to_if can?(:create, Group), t("group.new_sub"),  new_admin_group_path(:parent_id=>group.id) %>
+                </td>
+            </tr>
+              <% if group.children.any? -%>
+                <% @children = group.children -%>
+                <tr>
+                  <td colspan="2">
+                    <%= render :partial=>"children", :locals=>{:children=>@children} %>
+                  </td>
+                </tr>      
+              <% end -%>
+          <% end %>
+        </table> 
